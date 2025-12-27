@@ -67,7 +67,7 @@ This design allows you to disentangle:
 
 ## Notebooks in Detail
 
-### `scgen_benchmarking.ipynb`
+### `scGen_benchmarking_workflow.ipynb`
 
 **Goal:** Evaluate scGen as a deep generative model for predicting single-cell perturbation responses.
 
@@ -89,7 +89,7 @@ This design allows you to disentangle:
 - **Integration validation**
   - UMAP/PCA colored by batch, dataset, cell type, and perturbation to verify batch mixing and label separation before prediction.
 
-### `scpram_benchmarking.ipynb`
+### `scPRAM_benchmarking_workflow.ipynb`
 
 **Goal:** Evaluate scPRAM as a perturbation-aware deep generative model under the same protocols.
 
@@ -104,7 +104,7 @@ This design allows you to disentangle:
   - Predict Dong IFN-β responses.
   - Compare scPRAM performance with scGen and CellOT for both integration strategies.
 
-### `cellot_benchmarking.ipynb`
+### `cellOT_benchmarking_workflow.ipynb`
 
 **Goal:** Benchmark CellOT / Mean Delta-style baselines under the same data splits and integrations.
 
@@ -118,7 +118,10 @@ This design allows you to disentangle:
   - Train mappings on Kang.
   - Apply to Dong controls (scVI / Scanorama integrated).
   - Compare as a baseline against scGen and scPRAM.
-
+    
+- **Comprehensive method comparisons**
+  - Comparison: Internal Benchmarking - scGen vs scPRAM vs CellOT
+  - Cross-Study Extrapolation: Integration Strategy Comparison
 ---
 
 ## Evaluation Metrics
@@ -164,5 +167,108 @@ Aggregated summaries (CSV + plots) are generated for:
 
 ## Installation
 
-Minimal example (adapt as needed):
+Check each notebook’s first cell for the exact versions and dependencies.
 
+---
+
+## How to Run
+
+1. **Clone the repository**
+git clone https://github.com/katexiou/scGen-scPRAM-cellOT_benchmarking_workflows.git
+cd scGen-scPRAM-cellOT_benchmarking_workflows
+
+
+2. **Set up environment**
+- Create and activate a virtualenv or conda env.
+- Install the dependencies listed above.
+
+3. **Data Availability**
+
+Pre-computed results and processed datasets are available on Zenodo: [DOI: XXX/zenodo.XXXXXXX]
+
+### Zenodo Contents
+
+**Internal Benchmarking Results:**
+- `scGen_all_cell_types_evaluation_results.csv` - scGen internal results
+- `scPRAM_all_cell_types_evaluation_results.csv` - scPRAM internal results
+- `cellot_results/cellot_results.csv` - CellOT internal results
+
+**Cross-Study Extrapolation Results:**
+- `scgen_scvi_integrated_cross_results.csv` - scGen + scVI
+- `scgen_scanorama_integrated_cross_results.csv` - scGen + Scanorama
+- `scpram_scvi_integrated_cross_results.csv` - scPRAM + scVI
+- `scpram_scanorama_integrated_cross_results.csv` - scPRAM + Scanorama
+- `cellot_cross_study_scvi/scvi_mean_delta_results.csv` - Mean Delta + scVI
+- `cellot_cross_study_scanorama/scanorama_mean_delta_results.csv` - Mean Delta + Scanorama
+
+**Processed Datasets:**
+- `kang_processed.h5ad` - Preprocessed Kang PBMC dataset
+- `kang_final.h5ad` - Final Kang dataset for benchmarking
+- `Kang_Dong_integrated_filtered_final.h5ad` - scVI-integrated Kang-Dong dataset
+- `unintegrated_Kang_Dong.h5ad` - Unintegrated merged Kang-Dong dataset
+
+These files allow users to reproduce the final comparison and visualizations without rerunning the full training pipelines.
+
+4. **Run notebooks in order**
+- `scGen_benchmarking_workflow.ipynb`
+- `scPRAM_benchmarking_workflow.ipynb`
+- `cellOT_benchmarking_workflow.ipynb`
+
+5. **Inspect outputs**
+- CSVs
+- Plots
+- Summary CSVs for:
+  - Method comparison.
+  - Integration comparison.
+  - Per-cell-type metrics.
+
+---
+
+## Output Files (csv)
+
+### Individual Method Results
+- `scGen_all_cell_types_evaluation_results.csv`
+- `scgen_scvi_integrated_cross_results.csv`
+- `scgen_scanorama_integrated_cross_results.csv`
+- `scPRAM_all_cell_types_evaluation_results.csv`
+- `scpram_scvi_integrated_cross_results.csv`
+- `scpram_scanorama_integrated_cross_results.csv`
+- `./cellot_results/cellot_results.csv`
+- `./cellot_cross_study_scvi/scvi_mean_delta_results.csv`
+- `./cellot_cross_study_scanorama/scanorama_mean_delta_results.csv`
+
+### Cross-Method Comparison
+- `cross_study_summary.csv`
+- `cross_study_integration_comparison.csv`
+- `cross_study_prediction_comparison.csv`
+- `cross_study_detailed_comparison.csv`
+- `cross_study_rankings.csv`
+
+Plus multiple PNGs summarizing visualizations.
+
+---
+
+## Citation
+
+If you use these workflows, please cite the original methods and datasets, e.g.:
+
+- Lotfollahi et al., scGen: Generative modeling and latent space arithmetic for single-cell perturbation responses.
+- Lopez et al., scVI: A deep generative model for single-cell transcriptomics.
+- Hie et al., Scanorama: Efficient integration of heterogeneous single-cell transcriptomes.
+- Kang et al., Multiplexed droplet single-cell RNA-sequencing of stimulated and unstimulated PBMCs.
+- Dong et al., IFN-β single-cell PBMC study (or the exact reference you use).
+
+---
+
+## License
+
+MIT License – see LICENSE for details.
+
+---
+
+## Contact
+
+For questions or suggestions, please open an issue or contact:
+
+- `Aikaterini Alexiou` – `katerina.alexiou98@gmail.com`
+  
