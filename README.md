@@ -170,8 +170,8 @@ Check each notebook’s first cell for the exact versions and dependencies.
 ## How to Run
 
 1. **Clone the repository**
-git clone https://github.com/katexiou/scGen-scPRAM-cellOT_benchmarking_workflows.git
-cd scGen-scPRAM-cellOT_benchmarking_workflows
+- git clone https://github.com/katexiou/scGen-scPRAM-cellOT_benchmarking_workflows.git
+- cd scGen-scPRAM-cellOT_benchmarking_workflows
 
 
 2. **Set up environment**
